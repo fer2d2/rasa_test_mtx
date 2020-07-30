@@ -1,0 +1,7 @@
+{
+    "python.pythonPath": "${workspaceFolder}/venv/bin/python",
+    "editor.formatOnSave": true,
+    "python.linting.pycodestyleEnabled": true,
+    "python.linting.pylintPath": "pylint",
+    "python.linting.pylintEnabled": true,
+}

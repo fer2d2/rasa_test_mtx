@@ -1,0 +1,107 @@
+intents:
+  - greet
+  - ask_for_help
+  - create_request
+  - goodbye
+  - insult: { triggers: utter_defend }
+
+actions:
+  - utter_introduce_bot
+  - utter_show_what_bot_can_do
+  - utter_offer_help
+  - utter_create_request
+  # - action_request_slots_reset
+  - iter_action_create_request
+
+responses:
+  utter_introduce_bot:
+    - text: "¡Hola! Mi nombre es Alma, y soy el asistente virtual de tu ciudad."
+    - text: "¡Hola! Soy Alma, el asistente virtual de tu ciudad."
+    - text: "¡Hola! Me llamo Alma."
+  utter_offer_help:
+    - text: "¿Cómo puedo ayudarte? 😊"
+    - text: "¿Cómo puedo ayudarte?"
+    - text: "¿Qué necesitas?"
+    - text: "Pídeme lo que necesites 😊"
+  utter_show_what_bot_can_do:
+    - text: >
+        Sé bastantes cosas sobre tu ciudad. Sólo tienes que pedirme alguna de las cosas que sé hacer:
+
+        • Notificar un incidente en la vía pública. Prueba a decirme «crear aviso»
+
+        • Resolver una consulta. Prueba a decirme «hacer consulta»
+
+        • Mostrarte las últimas noticias de tu ciudad. Prueba a decirme «últimas noticias»
+  utter_create_request:
+    - text: "vamos a crear un nuevo aviso."
+  utter_goodbye:
+    - text: "¡Hablamos! 👋"
+    - text: "¡Hasta luego! 👋"
+    - text: "¡Nos vemos! Para cualquier cosa que necesites, ya sabes dónde encontrarme 🤖"
+  utter_defend:
+    - text: "¡No me hables así! ¬¬"
+  utter_ask_request_description:
+    - text: "¿Puedes describirme el problema?"
+    - text: "Cuéntame, ¿cuál es el problema?"
+  utter_request_wrong_description:
+    - text: "Necesitaria una descripción más extensa. Prueba otra vez."
+  utter_request_summary:
+    - text: >
+        Te paso un resumen de los datos de tu aviso:
+
+        • Descripción: {request_description}
+
+        Puedes consultarlo en esta URL:
+
+          {request_url}
+  utter_request_submit:
+    - text: "¡Perfecto! Acabo de crear tu aviso."
+    - text: "¡Hecho! He registrado tu aviso."
+    - text: "¡Ya está! Tu aviso ha sido dado de alta."
+  utter_default: # utterance sent by action_default_fallback
+    - text: "Lo siento, creo que no te he entendido."
+
+# forms:
+#   - description_form
+
+slots:
+  active_action:
+    type: text
+    auto_fill: false
+  active_field:
+    type: text
+    auto_fill: false
+  user_data:
+    type: text
+    auto_fill: false
+  request_jurisdiction:
+    type: text
+    auto_fill: false
+  request_jurisdiction_id:
+    type: text
+    auto_fill: false
+  request_services:
+    type: list
+    auto_fill: false
+  request_service:
+    type: text
+    auto_fill: false
+  request_location:
+    type: text
+    auto_fill: false
+  request_description:
+    type: unfeaturized
+    auto_fill: false
+  request_additional_data:
+    type: text
+    auto_fill: false
+  request_pictures:
+    type: list
+    auto_fill: false
+  request_url:
+    type: unfeaturized
+    auto_fill: false
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
